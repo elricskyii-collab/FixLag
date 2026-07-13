@@ -10,11 +10,11 @@ local UserGameSettings = UserSettings():GetService("UserGameSettings")
 local conn = nil
 local active = false
 
--- CONFIG — TUNED SO IT NEVER HURTS PERFORMANCE
+-- CONFIG â€” TUNED SO IT NEVER HURTS PERFORMANCE
 local CONFIG = {
     SpikeThresholdMs  = 55,    -- frame time = lag spike
     MemoryLimitMb     = 900,   -- clean only above this
-    MinCleanInterval  = 14,    -- SECONDS — NEVER CLEAN FASTER THAN THIS (MOST IMPORTANT FIX)
+    MinCleanInterval  = 14,    -- SECONDS â€” NEVER CLEAN FASTER THAN THIS (MOST IMPORTANT FIX)
     CheckRate         = 0.25,  -- how often to read stats
     MaxDebrisLife     = 3.5    -- auto expire junk faster
 }
@@ -25,7 +25,7 @@ local spikeCount = 0
 local origQuality = UserGameSettings.SavedQualityLevel
 
 -- ==============================================
--- SAFE CLEAN — ONLY RUNS RARELY, NEVER BACK TO BACK
+-- SAFE CLEAN â€” ONLY RUNS RARELY, NEVER BACK TO BACK
 -- ==============================================
 local function SafeCleanup(force)
     local now = tick()
@@ -33,7 +33,7 @@ local function SafeCleanup(force)
     lastClean = now
 
     task.defer(function()
-        -- Light GC only, NOT full aggressive collect — this was the main bug
+        -- Light GC only, NOT full aggressive collect â€” this was the main bug
         collectgarbage("step", 250)
         collectgarbage("step", 250)
 
@@ -56,7 +56,7 @@ local function SafeCleanup(force)
 end
 
 -- ==============================================
--- REAL SPIKE DETECTION — ACTUALLY WORKS
+-- REAL SPIKE DETECTION â€” ACTUALLY WORKS
 -- ==============================================
 local function Start()
     if conn then return end
@@ -116,7 +116,7 @@ my_own_section:AddToggle("Enable Anti Lag Spike", function(v)
 end)
 
 my_own_section:AddParagraph("", "Detects real frame spikes and high memory usage automatically.")
-my_own_section:AddParagraph("", "Cleanup runs rarely and lightly — will NOT build up lag over time.")
+my_own_section:AddParagraph("", "Cleanup runs rarely and lightly â€” will NOT build up lag over time.")
 my_own_section:AddParagraph("", "Render quality is locked permanently, graphics never lowered.")
 my_own_section:AddParagraph("", "Does not touch Silent Aim, Piercer, Wallbang or any ODH feature.")
 my_own_section:AddParagraph("Anti Lag Spike by @erixniex", "")
