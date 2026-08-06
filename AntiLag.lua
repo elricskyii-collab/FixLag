@@ -165,7 +165,7 @@ LocalPlayer.CharacterRemoving:Connect(function()
 end)
 
 -- UI
-section:AddParagraph("Anti Lag", "Optimized for Mobile/Tablet.\nFixes shiftlock stutter, freezes, input lag, and ping spikes.\ncredit @erixniex + optimized")
+section:AddParagraph("Anti Lag", "Credit @erixniex")
 
 section:AddToggle("Fix ShiftLock Stutter", function(enabled)
     shiftLockFixEnabled = enabled
